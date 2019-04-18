@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.RecyclerView.ViewHolder
 
 import android.support.v7.widget.helper.ItemTouchHelper
 import kotlinx.android.synthetic.main.activity_main.*
@@ -78,17 +79,17 @@ class MainActivity : AppCompatActivity() {
         //Create a new instance of ItemTouchHelper.SimpleCallback that define what happens to RecyclerView list items when the user performs various touch actions, such as swipe, or drag and drop
         val simpleItemTouchCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN or ItemTouchHelper.UP, mSwipeDirs) {
 
-            override fun onMove(recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, target: RecyclerView.ViewHolder?): Boolean {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: ViewHolder, target: ViewHolder): Boolean {
 
-                val from = viewHolder!!.adapterPosition
-                val to = target!!.adapterPosition
+                val from = viewHolder.adapterPosition
+                val to = target.adapterPosition
                 Collections.swap(mSportsData, from, to)
                 mAdapter.notifyItemMoved(from, to)
 
                 return true
             }
 
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder?, direction: Int) {
+            override fun onSwiped(viewHolder: ViewHolder, direction: Int) {
                 if (viewHolder != null) {
                     mSportsData.removeAt(viewHolder.adapterPosition)
                     mAdapter.notifyItemRemoved(viewHolder.adapterPosition)
