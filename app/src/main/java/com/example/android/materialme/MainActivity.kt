@@ -17,13 +17,13 @@
 package com.example.android.materialme
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.ViewHolder
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-import android.support.v7.widget.helper.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView = this.findViewById(R.id.recyclerView)
 
         //Set the Layout Manager
-        mRecyclerView.layoutManager = GridLayoutManager(this,gridColumnCount)
+        mRecyclerView.layoutManager = GridLayoutManager(this, gridColumnCount)
 
         //Initialize the ArrayLIst that will contain the data
         mSportsData = ArrayList()
